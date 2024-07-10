@@ -7,7 +7,7 @@
 / {
 	#address-cells = <1>;
 	#size-cells = <1>;
-	model = "mt7981-zbtlink_zbt-z8103ax";
+	model = "mt7981-comfast-wr633ax";
 	compatible = "mediatek,mt7981", "mediatek,mt7981-rfb";
 
 	chosen {
@@ -30,24 +30,24 @@
 			gpios = <&gpio 1 GPIO_ACTIVE_LOW>;
 		};
 
-		button-mesh {
-			label = "mesh";
-			linux,code = <BTN_9>;
-			gpios = <&gpio 0 GPIO_ACTIVE_LOW>;
+		button-wps {
+			label = "wps";
+			linux,code = <KEY_WPS_BUTTON>;
+			gpios = <&gpio 0 GPIO_ACTIVE_HIGH>;
 		};
 	};
 
 	leds {
 		compatible = "gpio-leds";
 
-		status_blue_led {
-			label = "blue:status";
-			gpios = <&gpio 23 GPIO_ACTIVE_LOW>;
-		};
-
 		status_red_led {
 			label = "red:status";
-			gpios = <&gpio 25 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
+		};
+
+		status_blue_led {
+			label = "blue:status";
+			gpios = <&gpio 35 GPIO_ACTIVE_LOW>;
 		};
 	};
 

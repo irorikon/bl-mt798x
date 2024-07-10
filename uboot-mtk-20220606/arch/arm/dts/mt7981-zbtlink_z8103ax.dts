@@ -7,7 +7,7 @@
 / {
 	#address-cells = <1>;
 	#size-cells = <1>;
-	model = "mt7981-zbtlink-zbt-z8103ax;
+	model = "mt7981-zbtlink-z8103ax;
 	compatible = "mediatek,mt7981", "mediatek,mt7981-rfb";
 
 	chosen {

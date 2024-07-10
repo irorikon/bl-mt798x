@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0
+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
 
 /dts-v1/;
 #include "mt7981.dtsi"
@@ -7,7 +7,7 @@
 / {
 	#address-cells = <1>;
 	#size-cells = <1>;
-	model = "mt7981-comfast-cf-wr633ax";
+	model = "mt7981-zbtlink_z8103ax";
 	compatible = "mediatek,mt7981", "mediatek,mt7981-rfb";
 
 	chosen {
@@ -26,11 +26,13 @@
 
 		button-reset {
 			label = "reset";
+			linux,code = <KEY_RESTART>;
 			gpios = <&gpio 1 GPIO_ACTIVE_LOW>;
 		};
 
-		button-wps {
-			label = "wps";
+		button-mesh {
+			label = "mesh";
+			linux,code = <BTN_9>;
 			gpios = <&gpio 0 GPIO_ACTIVE_LOW>;
 		};
 	};
@@ -38,15 +40,24 @@
 	leds {
 		compatible = "gpio-leds";
 
-		status_red_led {
-			label = "red:status";
-			gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
-		};
-
 		status_blue_led {
 			label = "blue:status";
-			gpios = <&gpio 35 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 23 GPIO_ACTIVE_LOW>;
 		};
+
+		status_red_led {
+			label = "red:status";
+			gpios = <&gpio 25 GPIO_ACTIVE_LOW>;
+		};
+	};
+
+	memory@40000000 {
+		device_type = "memory";
+		reg = <0x40000000 0x10000000>;
+	};
+
+	bl2_verify {
+		bl2_compatible = "spim-nand";
 	};
 };
 
@@ -57,12 +68,12 @@
 &eth {
 	status = "okay";
 	mediatek,gmac-id = <0>;
-	phy-mode = "sgmii";
+	phy-mode = "2500base-x";
 	mediatek,switch = "mt7531";
 	reset-gpios = <&gpio 39 GPIO_ACTIVE_HIGH>;
 
 	fixed-link {
-		speed = <1000>;
+		speed = <2500>;
 		full-duplex;
 	};
 };
