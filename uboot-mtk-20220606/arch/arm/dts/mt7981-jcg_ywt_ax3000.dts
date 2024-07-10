@@ -40,12 +40,17 @@
 
 		status_blue_led {
 			label = "blue:status";
-			gpios = <&gpio 23 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 35 GPIO_ACTIVE_LOW>;
 		};
 
 		status_red_led {
 			label = "red:status";
-			gpios = <&gpio 25 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 34 GPIO_ACTIVE_LOW>;
+		};
+
+		status_green_led {
+			label = "green:status";
+			gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
 		};
 	};
 };

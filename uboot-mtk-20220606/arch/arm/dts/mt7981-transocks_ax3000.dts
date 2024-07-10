@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+// SPDX-License-Identifier: GPL-2.0
 
 /dts-v1/;
 #include "mt7981.dtsi"
@@ -7,7 +7,7 @@
 / {
 	#address-cells = <1>;
 	#size-cells = <1>;
-	model = "mt7981-jcg_ywt_ax3000";
+	model = "mt7981-transocks_ax3000;
 	compatible = "mediatek,mt7981", "mediatek,mt7981-rfb";
 
 	chosen {
@@ -26,13 +26,11 @@
 
 		button-reset {
 			label = "reset";
-			linux,code = <KEY_RESTART>;
 			gpios = <&gpio 1 GPIO_ACTIVE_LOW>;
 		};
 
 		button-mesh {
 			label = "mesh";
-			linux,code = <BTN_9>;
 			gpios = <&gpio 0 GPIO_ACTIVE_LOW>;
 		};
 	};
@@ -55,15 +53,6 @@
 			gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
 		};
 	};
-
-	memory@40000000 {
-		device_type = "memory";
-		reg = <0x40000000 0x10000000>;
-	};
-
-	bl2_verify {
-		bl2_compatible = "spim-nand";
-	};
 };
 
 &uart0 {
@@ -73,12 +62,12 @@
 &eth {
 	status = "okay";
 	mediatek,gmac-id = <0>;
-	phy-mode = "2500base-x";
+	phy-mode = "sgmii";
 	mediatek,switch = "mt7531";
 	reset-gpios = <&gpio 39 GPIO_ACTIVE_HIGH>;
 
 	fixed-link {
-		speed = <2500>;
+		speed = <1000>;
 		full-duplex;
 	};
 };
