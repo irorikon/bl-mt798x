@@ -17,8 +17,8 @@
 
 	config {
 		bootcmd = "mtkboardboot";
-		blink_led = "yellow:mesh";
-		system_led = "blue:mesh";
+		blink_led = "mesh:yellow";
+		system_led = "mesh:blue";
 	};
 
 	gpio-keys {
@@ -39,28 +39,28 @@
 		compatible = "gpio-leds";
 
 		led_wifi_blue {
-			label = "blue:wifi";
-			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
+			label = "wifi:blue";
+			gpios = <&gpio 9 GPIO_ACTIVE_LOW>;
 		};
 
 		led_net_yellow {
-			label = "yellow:net";
-			gpios = <&pio 10 GPIO_ACTIVE_LOW>;
+			label = "net:yellow";
+			gpios = <&gpio 10 GPIO_ACTIVE_LOW>;
 		};
 
 		led_mesh_blue {
-			label = "blue:mesh";
-			gpios = <&pio 11 GPIO_ACTIVE_LOW>;
+			label = "mesh:blue";
+			gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
 		};
 
 		led_mesh_yellow {
-			label = "yellow:mesh";
-			gpios = <&pio 12 GPIO_ACTIVE_LOW>;
+			label = "mesh:yellow";
+			gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
 		};
 
 		led_net_blue {
-			label = "blue:net";
-			gpios = <&pio 13 GPIO_ACTIVE_LOW>;
+			label = "net:blue";
+			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
 		};
 	};
 };
