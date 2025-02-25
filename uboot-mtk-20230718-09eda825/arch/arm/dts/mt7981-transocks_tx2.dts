@@ -7,7 +7,7 @@
 / {
 	#address-cells = <1>;
 	#size-cells = <1>;
-	model = "mt7981-transocks_mx30l";
+	model = "mt7981-transocks_tx2";
 	compatible = "mediatek,mt7981", "mediatek,mt7981-rfb";
 
 	chosen {
@@ -42,27 +42,27 @@
 
 		led_wifi_blue {
 			label = "wifi:blue";
-			gpios = <&gpio 9 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 9 GPIO_ACTIVE_HIGH>;
 		};
 
 		led_net_yellow {
 			label = "net:yellow";
-			gpios = <&gpio 10 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 10 GPIO_ACTIVE_HIGH>;
 		};
 
 		led_mesh_blue {
 			label = "mesh:blue";
-			gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 11 GPIO_ACTIVE_HIGH>;
 		};
 
 		led_mesh_yellow {
 			label = "mesh:yellow";
-			gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 12 GPIO_ACTIVE_HIGH>;
 		};
 
 		led_net_blue {
 			label = "net:blue";
-			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 13 GPIO_ACTIVE_HIGH>;
 		};
 	};
 
