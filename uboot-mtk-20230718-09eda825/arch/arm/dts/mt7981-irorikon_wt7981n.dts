@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0
+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
 
 /dts-v1/;
 #include "mt7981.dtsi"
@@ -7,7 +7,7 @@
 / {
 	#address-cells = <1>;
 	#size-cells = <1>;
-	model = "mt7981-irorikon_ax3000;
+	model = "mt7981-irorikon_wt7981n";
 	compatible = "mediatek,mt7981", "mediatek,mt7981-rfb";
 
 	chosen {
@@ -17,8 +17,8 @@
 
 	config {
 		bootcmd = "mtkboardboot";
-		blink_led = "mesh:yellow";
-		system_led = "mesh:blue";
+		blink_led = "irorikon:5g:yellow";
+		system_led = "irorikon:5g:blue";
 	};
 
 	gpio-keys {
@@ -26,12 +26,19 @@
 
 		button-reset {
 			label = "reset";
+			linux,code = <KEY_RESTART>;
 			gpios = <&gpio 1 GPIO_ACTIVE_LOW>;
 		};
 
 		button-mesh {
 			label = "mesh";
+			linux,code = <BTN_9>;
 			gpios = <&gpio 0 GPIO_ACTIVE_LOW>;
+		};
+
+		button-rfkill {
+			label = "rfkill";
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 		};
 	};
 
@@ -39,29 +46,38 @@
 		compatible = "gpio-leds";
 
 		led_wifi_blue {
-			label = "wifi:blue";
+			label = "irorikon:wifi:blue";
 			gpios = <&gpio 9 GPIO_ACTIVE_HIGH>;
 		};
 
-		led_net_yellow {
-			label = "net:yellow";
+		led_4g_yellow {
+			label = "irorikon:4g:yellow";
 			gpios = <&gpio 10 GPIO_ACTIVE_HIGH>;
 		};
 
-		led_mesh_blue {
-			label = "mesh:blue";
+		led_5g_blue {
+			label = "irorikon:5g:blue";
 			gpios = <&gpio 11 GPIO_ACTIVE_HIGH>;
 		};
 
-		led_mesh_yellow {
-			label = "mesh:yellow";
+		led_5g_yellow {
+			label = "irorikon:5g:yellow";
 			gpios = <&gpio 12 GPIO_ACTIVE_HIGH>;
 		};
 
-		led_net_blue {
-			label = "net:blue";
+		led_4g_blue {
+			label = "irorikon:4g:blue";
 			gpios = <&gpio 13 GPIO_ACTIVE_HIGH>;
 		};
+	};
+
+	memory@40000000 {
+		device_type = "memory";
+		reg = <0x40000000 0x10000000>;
+	};
+
+	bl2_verify {
+		bl2_compatible = "spim-nand";
 	};
 };
 
@@ -72,12 +88,12 @@
 &eth {
 	status = "okay";
 	mediatek,gmac-id = <0>;
-	phy-mode = "sgmii";
+	phy-mode = "2500base-x";
 	mediatek,switch = "mt7531";
 	reset-gpios = <&gpio 39 GPIO_ACTIVE_HIGH>;
 
 	fixed-link {
-		speed = <1000>;
+		speed = <2500>;
 		full-duplex;
 	};
 };
