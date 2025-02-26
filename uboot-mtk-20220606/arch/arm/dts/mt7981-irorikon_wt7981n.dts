@@ -67,6 +67,31 @@
 			label = "irorikon:4g:blue";
 			gpios = <&gpio 13 GPIO_ACTIVE_HIGH>;
 		};
+
+		led_lan1_blue {
+			label = "irorikon:lan1:blue";
+			gpios = <&gpio 4 GPIO_ACTIVE_LOW>;
+		};
+
+		led_lan2_blue {
+			label = "irorikon:lan2:blue";
+			gpios = <&gpio 16 GPIO_ACTIVE_LOW>;
+		};
+
+		led_wan_blue {
+			label = "irorikon:wan:blue";
+			gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
+		};
+
+		led_status_blue {
+			label = "irorikon:blue:blue";
+			gpios = <&gpio 5 GPIO_ACTIVE_HIGH>;
+		};
+
+		led_status_red {
+			label = "irorikon:blue:red";
+			gpios = <&gpio 6 GPIO_ACTIVE_HIGH>;
+		};
 	};
 };
 
