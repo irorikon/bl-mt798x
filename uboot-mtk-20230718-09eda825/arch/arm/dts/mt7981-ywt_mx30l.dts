@@ -64,6 +64,21 @@
 			label = "net:blue";
 			gpios = <&gpio 13 GPIO_ACTIVE_HIGH>;
 		};
+
+		led_lan1 {
+			label = "lan1:yellow";
+			gpios = <&gpio 4 GPIO_ACTIVE_LOW>;
+		};
+
+		led_lan2 {
+			label = "lan2:yellow";
+			gpios = <&gpio 22 GPIO_ACTIVE_LOW>;
+		};
+
+		led_wan {
+			label = "wan:yellow";
+			gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
+		};
 	};
 
 	memory@40000000 {
